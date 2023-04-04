@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 
 const SquareComponent = () => {
     //opcional colocarlo como initialValue de squareState
-    let squareColor= 'black'
+    // let squareColor= 'black'
     const [changeColor, setChangeColor] = useState(false);
     const [squareState, setSquareState] = useState('black');
     
@@ -52,13 +52,12 @@ const SquareComponent = () => {
 
     return (
         <div style={{justifyContent:'center', display:'flex', alignItems:'center', padding:'100px'}}>
-            {/* {generateSquare()}   */}
             <div style={squareStyle} 
                     onMouseOver={initChangeColor} 
                     onMouseOut={stopChangeColor}
-                    onDoubleClick={stopChangeColor}>
+                    onDoubleClick={changeColor ? stopChangeColor : initChangeColor}>
 
-                </div>      
+            </div>      
         </div>
     )
 }
