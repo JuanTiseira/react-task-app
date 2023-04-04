@@ -11,6 +11,8 @@ import Clock from './components/pure/clock';
 import { ClockExercise } from './components/pure/ClockExercise';
 import ListComponent from './components/pure/nomenCom';
 import { Father } from './components/container/father';
+import OptionalRender from './components/pure/optionalRender';
+import SquareComponent from './components/pure/squareComponent';
   // import result from 'constants';
 
 function App() {
@@ -21,7 +23,7 @@ function App() {
     <div className="App">
         {/* componente de listado de tareas */}
         {/* <TaskListComponent></TaskListComponent> */}
-        <ContactListComponent></ContactListComponent>
+        {/* <ContactListComponent></ContactListComponent> */}
          {/* <Ejemplo></Ejemplo> */}
          {/* <Ejemplo2></Ejemplo2> */}
          {/* <MiComponenteConContexto></MiComponenteConContexto> */}
@@ -31,6 +33,9 @@ function App() {
         {/* <ClockExercise ></ClockExercise> */}
         {/* </header> */}
         {/* <TaskListComponent></TaskListComponent> */}
+        {/* Ejemplos de renderizado condicional */}
+        {/* <OptionalRender></OptionalRender> */}
+        <SquareComponent></SquareComponent>
         {/* <ListComponent list={result}></ListComponent> */}
         {/* gestin de eventos */}
         {/* <Father></Father> */}
