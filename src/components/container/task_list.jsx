@@ -22,7 +22,9 @@ function TaskListComponent() {
     useEffect(() => {
         
         console.log('task state has been modified')
-        setLoading(false)
+        setTimeout(()=>{
+            setLoading(false)
+        },2000);
         return () => {
             console.log('tasklist component is going to unmount..')
             
@@ -31,9 +33,9 @@ function TaskListComponent() {
 
 
 
-    const changeCompleted = (id) => {
-        console.log('cambiar estado de una tarea')
-    }
+    // const changeCompleted = (id) => {
+    //     console.log('cambiar estado de una tarea')
+    // }
 
     function completeTask(task){
         console.log("complete this task", task)
@@ -50,21 +52,74 @@ function TaskListComponent() {
         const tempTasks = [...tasks];
         tempTasks.splice(index,1);
         //actualizar el esatdo del componente y la iteracionnde tareas y actualiza las tareas
+        setLoading(true)
         setTask(tempTasks);
     }
     function addTask(task){
         console.log("add this task", task)
-        const index = tasks.indexOf(task);
         const tempTasks = [...tasks];
         tempTasks.push(task)
         //actualizar el esatdo del componente y la iteracionnde tareas y actualiza las tareas
+        setLoading(true)
         setTask(tempTasks);
+    }
+    const Table = () => {
+        return(
+            <table className='table rounded'>
+                            <thead>
+                                <tr>
+                                    <th  scope='col'>Title</th>
+                                    <th  scope='col'>Description</th>
+                                    <th  scope='col'>Priority</th>
+                                    <th  scope='col'>Completed</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {/* TODO ITERAR SOBRE UNA LISTA DE TAREAS 
+                                para ello hacer mapeo de los datos osea de la lista
+                                el key es una propiedad para darle a los datos 
+                                para que se muestren
+                                muchos datos distintos*/}
+                                {tasks.map((task, index) =>{
+                                    
+                                    return (
+
+                                        <TaskComponent 
+                                            key = {index} 
+                                            task = { task }
+                                            complete = {completeTask}
+                                            remove = {removeTask}>
+                                            
+                                        </TaskComponent>
+                                    )
+                                })}
+                                
+                            </tbody>
+                        </table>
+        )
+    }
+    let tasksTable;
+
+    if(tasks.length > 0){
+        tasksTable = <Table></Table>
+    }else{
+        tasksTable = 
+        (<div>
+            <h1>There no tasks to show</h1>
+            <h4>Please create one</h4>
+        </div>)
+    }
+
+    const loadingStyle = {
+        color:'grey',
+        fontSize:'30px',
+        fontWeight:'bold'
     }
     return (
     <div className='row'>
-        <div className='col-12 container text-center'>
+        <div className='col-sm-12 col-xl-8 container text-center p-4'>
             {/* card */}
-            <div className='card'>
+            <div className='card col-xl-12 col-sm-12'>
                 {/* card header title*/}
                 <div className='card-header bg-dark' >
                     <h5 style={{color: 'white'}}>
@@ -72,49 +127,43 @@ function TaskListComponent() {
                     </h5>
                 </div>
                 {/* card body content*/}
-                <div className='card-body row justify-content-center' data-mdb-perfect-scrollbar='true' style={{position: 'relative'}}>
-                    <div className='col-12 col-xl-6'>
-                    <table className='table table-dark table-striped rounded'>
-                        <thead>
-                            <tr>
-                                <th  scope='col'>Title</th>
-                                <th  scope='col'>Description</th>
-                                <th  scope='col'>Priority</th>
-                                <th  scope='col'>Completed</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {/* TODO ITERAR SOBRE UNA LISTA DE TAREAS 
-                            para ello hacer mapeo de los datos osea de la lista
-                            el key es una propiedad para darle a los datos para que se muestren
-                            muchos datos distintos*/}
-                            {tasks.map((task, index) =>{
-                                
-                                return (
-
-                                    <TaskComponent 
-                                        key = {index} 
-                                        task = { task }
-                                        complete = {completeTask}
-                                        remove = {removeTask}>
-                                        
-                                    </TaskComponent>
-                                )
-                            })}
-                            
-                        </tbody>
-                    </table>
-                    </div> 
-                </div>
-                <div className='row justify-content-center'>
-                    <div className='col-xl-6'>
-                        <TaskForm add={addTask}></TaskForm>
-        
+                <div className='card-body row justify-content-center' 
+                    data-mdb-perfect-scrollbar='true' 
+                    style={{position: 'relative', alignItems:'center'}}>
+                    <div className='col-sm-12 col-xl-7' style={{
+                        maxWidth: '100%',
+                        overflowX: 'auto'}}>
+                            {/* todo add loading spinner */}
+                        {loading ? (<p style={loadingStyle}>loading tasks...</p>) : tasksTable}
                     </div>
+                     
                 </div>
+                    
+            </div>
+
+        </div>
+        <div className='col-sm-12 col-xl-4 container text-center p-4'>
+            <div className='card col-xl-12'>
+                <div className='card-header bg-dark' >
+                    <h5 style={{color: 'white'}}>
+                    Registrar tarea:
+                    </h5>
+                </div>
+                <div className='card-body row justify-content-center' 
+                    data-mdb-perfect-scrollbar='true' 
+                    style={{position: 'relative', alignItems:'center'}}>
+                    
+                    <div className='col-sm-12 col-xl-12' style={{
+                        maxWidth: '100%',
+                        margin: '0 auto',
+                        padding: '10px',
+                        boxSizing: 'border-box'
+                        }}>
+                        <TaskForm add={addTask} length={tasks.length}></TaskForm>
+                    </div>
+                </div>    
             </div>
         </div>
-        
     </div>
     
   )

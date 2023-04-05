@@ -59,14 +59,30 @@ function TaskComponent ({ task, complete, remove }) {
         if(task.completed){
             //en el evento onclick del icono de completitud pasamos la funcion que 
             //el padre pasa por props y le pasamos la tarea
-            return (<i onClick={() => complete(task)} className='bi-toggle-on m-3 task-action' style={{color: 'green'}}></i>)
+            return (<i onClick={() => complete(task)} 
+                        className='bi-toggle-on m-3 task-action' 
+                        style={{color: 'green'}}>
+                    </i>)
         }else{
-            return  (<i onClick={() => complete(task)} className='bi-toggle-off m-3 task-action' style={{color: 'green'}}></i>)
+            return  (<i onClick={() => complete(task)} 
+                        className='bi-toggle-off m-3 task-action' 
+                        style={{color: 'green'}}>
+                    </i>)
         }
     }
+    const taskCompleted = {
+        textDecoration: 'line-through',
+        color: 'gray',
+        fontWeight:'bold'
+    }
+    const taskPending = {
+        fontWeight: 'bold',
+        color: 'tomato'
+    }
+
     return (
     // las class fontweigth
-    <tr>
+    <tr style={task.completed ? taskCompleted : taskPending}>
         <th>
             {/* span para poder aplicarle estilos */}
             <span className='ms-2'>{task.name}</span>
@@ -82,7 +98,10 @@ function TaskComponent ({ task, complete, remove }) {
             {/* sustituir por un icono */}
             {taskCompletedIcon()}
             {/* pasamos el prop que es una funcion del padre y le pasamos el task a la funcion */}
-            <i onClick={() => remove(task)} className='bi-trash task-action' style={{color: 'tomato'}}></i>
+            <i onClick={() => remove(task)} 
+                className='bi-trash task-action' 
+                style={{color: 'tomato'}}>
+            </i>
             {/* <span>{task.completed ? 'COMPLETED':'PENDING'}</span> */}
         </td>
     </tr>

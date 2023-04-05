@@ -32,10 +32,10 @@ function App() {
         {/* <Clock></Clock> */}
         {/* <ClockExercise ></ClockExercise> */}
         {/* </header> */}
-        {/* <TaskListComponent></TaskListComponent> */}
+        <TaskListComponent></TaskListComponent>
         {/* Ejemplos de renderizado condicional */}
         {/* <OptionalRender></OptionalRender> */}
-        <SquareComponent></SquareComponent>
+        {/* <SquareComponent></SquareComponent> */}
         {/* <ListComponent list={result}></ListComponent> */}
         {/* gestin de eventos */}
         {/* <Father></Father> */}

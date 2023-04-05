@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 import { LEVELS } from '../../../models/levels.enum';
 import { Task } from '../../../models/task.class';
 
-const TaskForm = ({add}) => {
+const TaskForm = ({add, length}) => {
   
   const nameRef = useRef('');
   const descriptionRef = useRef('');
@@ -29,30 +29,101 @@ const TaskForm = ({add}) => {
       );
       add(newTask);
   }
-  
+  const inputStyle = {
+    padding:'10px', 
+    borderRadius:'20px'
+  }
   return (
-    <form onSubmit={addTask} style={{justifyContent: 'center', alignItems: 'center', marginBlock: '100px'}}>
-      <div className='form-outline flex-fill' style={{borderRadius:'10px', marginBlock:'50px'}}>
-        <label htmlFor="inputName" >Name</label>
-        <input type="text" ref={nameRef} id = 'inputName' style={{marginInline:'10px', padding:'10px', borderRadius:'20px'}} />
-        <label htmlFor="inputDescription" >Description</label>
+    <form onSubmit={addTask} >
+      <div className='form-outline flex-fill' 
+        style={{justifyContent: 'center', 
+        alignItems: 'center', display:'block'}}>
         
-        <input type="text" ref={descriptionRef} id = 'inputDescription' style={{marginInline:'10px', padding:'10px', borderRadius:'20px'}} />
-        
-        <label htmlFor="selectLevel" >Priority</label>
-        <select id='selectLevel' ref={levelRef} defaultValue={LEVELS.NORMAL}  style={{marginInline:'10px', padding:'10px', borderRadius:'20px', marginBlock: '50px'}}>
-          <option value={LEVELS.NORMAL}>Normal</option>
-          <option value={LEVELS.URGENT}>Urgent</option>   
-          <option value={LEVELS.BLOCKING}>Blocking</option>   
-        </select>
+          
+        <div className='row' style={{margin:'20px'}}>
+          <div className='col-sm-12' >
+            <label htmlFor="inputName" style={{fontWeight:'bold', fontSize:'25px'}}>Name</label>
+          </div>
+          <div className='col-sm-12'>
+            <input type="text" 
+            ref={nameRef} id = 'inputName' 
+            style={inputStyle}/>
+          </div>
+        </div>
+
+        <div className='row'  style={{margin:'20px'}}>
+          <div className='col-sm-12'>
+            <label htmlFor="inputDescription" 
+              style={{
+                fontWeight:'bold', 
+                fontSize:'25px'}}>
+                  Description
+            </label>
+          </div>
+          <div className='col-sm-12'>
+            <input type="text" 
+              ref={descriptionRef} 
+              id = 'inputDescription' 
+
+              style={inputStyle} />
+          </div>
+        </div>
+
+        <div className='row' 
+          style={{
+          justifyContent: 'center', 
+          alignItems: 'center',
+          margin:'20px'}}>
+
+          <div className='col-sm-12'>
+            {/* <label htmlFor="selectLevel" 
+
+              style={{
+                fontWeight:'bold', 
+                fontSize:'25px'}}>
+
+                  Priority
+
+            </label> */}
+          </div>
+          <div className='col-sm-12'>
+            <select id='selectLevel' 
+              ref={levelRef} 
+              defaultValue={LEVELS.NORMAL}  
+              style={{ 
+                padding:'10px', 
+                borderRadius:'20px',
+                margin:'5px'}}>
+
+              <option value={LEVELS.NORMAL}>Normal</option>
+              <option value={LEVELS.URGENT}>Urgent</option>   
+              <option value={LEVELS.BLOCKING}>Blocking</option>   
+            </select>
+          </div>
+        </div>
+        <button 
+        type='submit' 
+        style={{
+            width:'100px',
+            borderColor:'transparent',
+            marginInline:'10px',
+            background:'#047af3', 
+            color: 'white', 
+            padding:'10px', 
+            borderRadius:'20px'}}>
+            {length > 0 ? 'Add Task':'Create your first Task'}
+              
+
+      </button>
       </div>
-      <button type='submit' style={{width:'100px',borderColor:'transparent',marginInline:'10px',background:'#047af3', color: 'white', padding:'10px', borderRadius:'20px'}}>Add</button>
+      
     </form>
   )
 }
 
 TaskForm.propTypes = {
-  add: PropTypes.func.isRequired
+  add: PropTypes.func.isRequired,
+  length: PropTypes.number.isRequired,
 
 }
 export default TaskForm;
