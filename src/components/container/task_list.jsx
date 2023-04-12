@@ -5,6 +5,7 @@ import TaskComponent  from "../pure/task"
 //imprtamos la hoja de tassk.scss
 import '../../styles/task.scss';
 import TaskForm from '../pure/forms/taskForm';
+import TaskFormik from '../pure/forms/taskFormik';
 
 function TaskListComponent() {
     //tarea por defecto instancia de clase task
@@ -159,7 +160,8 @@ function TaskListComponent() {
                         padding: '10px',
                         boxSizing: 'border-box'
                         }}>
-                        <TaskForm add={addTask} length={tasks.length}></TaskForm>
+                        <TaskFormik add={addTask} length={tasks.length}></TaskFormik>
+                        {/* <TaskForm add={addTask} length={tasks.length}></TaskForm> */}
                     </div>
                 </div>    
             </div>

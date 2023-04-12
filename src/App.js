@@ -1,18 +1,21 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import TaskListComponent from './components/container/task_list';
-import ContactListComponent from './components/container/contact_list';
-import Ejemplo from './hooks/Ejemplo1';
-import Ejemplo2 from './hooks/Ejemplo2';
-import MiComponenteConContexto from './hooks/Ejemplo3';
-import Ejemplo4 from './hooks/Ejemplo4';
-import GreetingStyled from './components/pure/greetingStyled';
-import Clock from './components/pure/clock';
-import { ClockExercise } from './components/pure/ClockExercise';
-import ListComponent from './components/pure/nomenCom';
-import { Father } from './components/container/father';
-import OptionalRender from './components/pure/optionalRender';
-import SquareComponent from './components/pure/squareComponent';
+// import ContactListComponent from './components/container/contact_list';
+// import Ejemplo from './hooks/Ejemplo1';
+// import Ejemplo2 from './hooks/Ejemplo2';
+// import MiComponenteConContexto from './hooks/Ejemplo3';
+// import Ejemplo4 from './hooks/Ejemplo4';
+// import GreetingStyled from './components/pure/greetingStyled';
+// import Clock from './components/pure/clock';
+// import { ClockExercise } from './components/pure/ClockExercise';
+// import ListComponent from './components/pure/nomenCom';
+// import { Father } from './components/container/father';
+// import OptionalRender from './components/pure/optionalRender';
+// import SquareComponent from './components/pure/squareComponent';
+// import LoginFormik from './components/pure/forms/loginFormik';
+// import { RegisterForm } from './components/pure/forms/registerForm';
+import RegisterFormik from './components/pure/forms/registerFormik';
   // import result from 'constants';
 
 function App() {
@@ -33,6 +36,8 @@ function App() {
         {/* <ClockExercise ></ClockExercise> */}
         {/* </header> */}
         <TaskListComponent></TaskListComponent>
+        {/* <LoginFormik></LoginFormik> */}
+        {/* <RegisterFormik></RegisterFormik> */}
         {/* Ejemplos de renderizado condicional */}
         {/* <OptionalRender></OptionalRender> */}
         {/* <SquareComponent></SquareComponent> */}
