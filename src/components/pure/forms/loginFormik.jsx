@@ -1,4 +1,5 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
@@ -19,7 +20,7 @@ const loginSchema = Yup.object().shape(
 
 
 const LoginFormik = () => {
-    
+    const history = useHistory();
     const initialCredencials = {
         email: '',
         password: ''
@@ -29,7 +30,7 @@ const LoginFormik = () => {
             <h4>Login Formik</h4>
             <Formik 
                 // initial values that the form wil take
-                initialValues={{initialCredencials}}
+                initialValues={initialCredencials}
                 // yup validation schema
                 validationSchema={loginSchema}
                 // on submit event
@@ -37,7 +38,8 @@ const LoginFormik = () => {
                     await new Promise((r) => setTimeout(r, 1000));
                     alert(JSON.stringify(values, null, 2));
                     //registrar los datos del logueo en el
-                    localStorage.setItem('credentials', values)
+                    await localStorage.setItem('credentials', values);
+                    history.push('/profile')
                 }}>
 
                     {({ values,

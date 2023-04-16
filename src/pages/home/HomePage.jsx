@@ -9,6 +9,15 @@ const HomePage = () => {
         history.push(path)
     }
 
+    const navigateProps = (path) => {
+      history.push({
+        pathname: path,
+        search:'?online=true',//query params  
+        state: {
+          online: true
+        }
+      })
+    }
     console.log('we are in route', location.pathname)
 
     const goBack = () => {
@@ -26,6 +35,9 @@ const HomePage = () => {
         <h2>
             Dashboard
         </h2>
+        <button onClick={() => {navigateProps('/online-state')}}>
+                Go To Page with State / query params
+        </button>
         <button onClick={goBack}>
                 Go Back
         </button>

@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 import TaskListComponent from './components/container/task_list';
+import { LoginForm } from './components/pure/forms/loginForm';
 // import ContactListComponent from './components/container/contact_list';
 // import Ejemplo from './hooks/Ejemplo1';
 // import Ejemplo2 from './hooks/Ejemplo2';
@@ -35,7 +36,8 @@ function App() {
         {/* <Clock></Clock> */}
         {/* <ClockExercise ></ClockExercise> */}
         {/* </header> */}
-        <TaskListComponent></TaskListComponent>
+        <LoginForm></LoginForm>
+        {/* <TaskListComponent></TaskListComponent> */}
         {/* <LoginFormik></LoginFormik> */}
         {/* <RegisterFormik></RegisterFormik> */}
         {/* Ejemplos de renderizado condicional */}

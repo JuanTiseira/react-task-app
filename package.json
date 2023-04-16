@@ -18,7 +18,8 @@
     "react-scripts": "5.0.1",
     "sass": "^1.59.3",
     "web-vitals": "^2.1.4",
-    "yup": "^1.0.2"
+    "yup": "^1.0.2",
+    "styled-components": "5.2.3"
   },
   "scripts": {
     "start": "react-scripts start",
